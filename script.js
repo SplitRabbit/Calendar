@@ -92,11 +92,25 @@ $('body').on('click', '.saveBtn', function(){
 });
 
 //Restore localstorage tasks on load
-function restoretasks() {
-    for (var i=9; i <=17; i++) {
-   if (row.id = i)
-   {row.tasks.innerHTML.replaceWith(localStorage.getObj(i))};
-}
-};
+// function restoretasks() {
+//     for (var i=9; i <=17; i++) {
+//    if (row.id = i)
+//    {var storedtasks = (localStorage.getObj(i))
+//      row.innerHTML.replaceWith(storedtasks)};
+// }
+// };
 
-restoretasks();
+// restoretasks();
+
+//grab innerhtml from localstorage
+function restoretasks() {
+Array.from(row).forEach(row => {
+    // compares row id to time to set color
+    if (localStorage.getObj(row.id)) {
+      //fill in function for replacement here 
+      localStorage.getObj(row.id)
+    } 
+    else {}
+  console.log("tasks restored")
+  })
+};
