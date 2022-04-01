@@ -1,4 +1,16 @@
 
+// //set top time to element
+const currentdate = new Date();
+const yyyy = currentdate.getFullYear();
+let mm = currentdate.getMonth() + 1; // Months start at 0!
+let dd = currentdate.getDate();
+
+if (dd < 10) dd = '0' + dd;
+if (mm < 10) mm = '0' + mm;
+
+const today = dd + '/' + mm + '/' + yyyy;
+document.getElementById("currentDay").innerHTML = today;
+
 //Set Color for row based on past present future
 const row = document.getElementsByClassName("row");
 let currentHour = parseInt(moment().format('H'));
