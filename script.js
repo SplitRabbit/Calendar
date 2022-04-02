@@ -67,12 +67,12 @@ $('body').on('click', '.tasks', function(){
     
 //on clicking elsewhere save the div and focus
     $input.on('blur', save).focus();
-    $input.on('keypress',function(e){
-        if(e.which == 13) {
-            console.log(save);
-            save().focus();
-        }
-    });
+    // $input.on('keypress',function(e){
+    //     if(e.which == 13) {
+    //         console.log(save);
+    //         save().focus();
+    //     }
+    // });
 });
 
 
@@ -106,11 +106,15 @@ $('body').on('click', '.saveBtn', function(){
 function restoretasks() {
 Array.from(row).forEach(row => {
     // compares row id to time to set color
+    var storedtasks = localStorage.getObj(row.id);
     if (localStorage.getObj(row.id)) {
       //fill in function for replacement here 
-      localStorage.getObj(row.id)
+      $(this).siblings(".tasks").val(storedtasks)
     } 
     else {}
+  console.log(storedtasks)
   console.log("tasks restored")
   })
 };
+
+restoretasks();
