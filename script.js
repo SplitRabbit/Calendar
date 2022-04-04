@@ -107,9 +107,9 @@ function restoretasks() {
 Array.from(row).forEach(row => {
     // compares row id to time to set color
     var storedtasks = localStorage.getObj(row.id);
-    if (localStorage.getObj(row.id)) {
+    if (storedtasks ===!null) {
       //fill in function for replacement here 
-      $(this).siblings(".tasks").val(storedtasks)
+      $(this).siblings(".tasks").text(storedtasks)
     } 
     else {}
   console.log(storedtasks)
@@ -118,3 +118,5 @@ Array.from(row).forEach(row => {
 };
 
 restoretasks();
+
+
