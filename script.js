@@ -67,12 +67,11 @@ $('body').on('click', '.tasks', function(){
     
 //on clicking elsewhere save the div and focus
     $input.on('blur', save).focus();
-    // $input.on('keypress',function(e){
-    //     if(e.which == 13) {
-    //         console.log(save);
-    //         save().focus();
-    //     }
-    // });
+    $input.on('keypress',function(e){
+        if(e.which == 13) {
+            save();
+        }
+    });
 });
 
 
@@ -91,31 +90,22 @@ $('body').on('click', '.saveBtn', function(){
     localStorage.setObj(rowid,task)
 });
 
-//Restore localstorage tasks on load
-// function restoretasks() {
-//     for (var i=9; i <=17; i++) {
-//    if (row.id = i)
-//    {var storedtasks = (localStorage.getObj(i))
-//      row.innerHTML.replaceWith(storedtasks)};
-// }
-// };
-
-// restoretasks();
-
 //grab innerhtml from localstorage
 function restoretasks() {
   $(".row").each( function() {
-  
-      let hour = $(this).attr("id")
-      console.log(hour)
-      let storedStuff = localStorage.getObj(hour)
-      // compares row id to time to set color
-      if (storedStuff) {
-        //fill in function for replacement here 
-        $(this).children(".tasks").text(storedStuff)
-      } 
-    console.log("tasks restored")
-    })
-  };
+
+    let hour = $(this).attr("id")
+    console.log(hour)
+    let storedStuff = localStorage.getObj(hour)
+    // compares row id to time to set color
+    if (storedStuff) {
+      //fill in function for replacement here 
+      $(this).children(".tasks").text(storedStuff)
+    } 
+  console.log("tasks restored")
+  })
+};
 
 restoretasks();
+
+
