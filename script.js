@@ -43,7 +43,7 @@ Array.from(row).forEach(row => {
 
 window.onload = function () {
     settimecolor(); //call page every 10 minutes 
-    setInterval(settimecolor, 6000); //Then set it to run again after interval
+    setInterval(settimecolor, 60000); //Then set it to run again after interval
 }
 
 //add event listener to body listening to clicks on tasks class
@@ -104,19 +104,18 @@ $('body').on('click', '.saveBtn', function(){
 
 //grab innerhtml from localstorage
 function restoretasks() {
-Array.from(row).forEach(row => {
-    // compares row id to time to set color
-    var storedtasks = localStorage.getObj(row.id);
-    if (storedtasks ===!null) {
-      //fill in function for replacement here 
-      $(this).siblings(".tasks").text(storedtasks)
-    } 
-    else {}
-  console.log(storedtasks)
-  console.log("tasks restored")
-  })
-};
+  $(".row").each( function() {
+  
+      let hour = $(this).attr("id")
+      console.log(hour)
+      let storedStuff = localStorage.getObj(hour)
+      // compares row id to time to set color
+      if (storedStuff) {
+        //fill in function for replacement here 
+        $(this).children(".tasks").text(storedStuff)
+      } 
+    console.log("tasks restored")
+    })
+  };
 
 restoretasks();
-
-
